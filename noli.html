@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noli Me Tangere | Academic Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* override para hindi mag-center ang buong page at mawala ang button */
+        body {
+            display: block !important;
+            height: auto !important;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .noli-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Styling para magmukhang totoong button ang .btn-back */
+        .btn-back {
+            text-decoration: none !important;
+            border: 1.5px solid var(--accent);
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .btn-back:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            background: #000;
+            margin: 30px 0;
+            border: 1px solid var(--card-bg);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .noli-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .noli-gallery img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid var(--accent);
+        }
+
+        @media (max-width: 600px) {
+            .noli-gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="noli-container">
+        <button class="btn-back" onclick="window.location.href='index.html?view=4th'">
+            ← Back to 4th quarter page
+        </button>
+        
+        <header style="text-align: center; margin-top: 20px;">
+            <h1 style="color: var(--accent); font-size: 2.5rem;">Noli Me Tangere</h1>
+        </header>
+
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/BZzZuFfydwI" 
+                    title="Noli Me Tangere Presentation"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="noli-gallery">
+            <img src="noli1.jpg" alt="Performance Pic 1">
+            <img src="noli2.jpg" alt="Performance Pic 2">
+        </div>
+    </div>
+
+</body>
+</html>

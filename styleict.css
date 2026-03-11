@@ -1,0 +1,196 @@
+/* --- Root Variables for Easy Customization --- */
+:root {
+    --bg: #0f172a;           /* Deep Blue-Black Background */
+    --card-bg: #1e293b;      /* Slate Blue Card Background */
+    --inner-bg: #334155;     /* Lighter Slate for Nested Content */
+    --accent: #38bdf8;       /* Electric Blue for Highlights */
+    --text: #f1f5f9;         /* Off-White for Primary Text */
+    --text-muted: #94a3b8;   /* Gray for Subtitles and Muted Info */
+    --border: #475569;       /* Subtle Border Color */
+    --code-bg: #000000;      /* Pure Black for Code Blocks */
+}
+
+/* --- Global Styles --- */
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 2rem 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 1.2rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Typography --- */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, var(--accent), #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#lesson-subtitle {
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+}
+
+h2 {
+    color: var(--text);
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+h3 {
+    color: var(--accent);
+    margin-top: 1.8rem;
+    font-size: 1.2rem;
+    border-left: 4px solid var(--accent);
+    padding-left: 12px;
+}
+
+/* --- Navigation & Buttons --- */
+.btn-back {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform 0.2s ease;
+}
+
+.btn-back:hover {
+    transform: translateX(-5px);
+    text-decoration: underline;
+}
+
+/* --- Lesson Card & Accordion Mechanism --- */
+.lesson-card {
+    background: var(--inner-bg);
+    padding: 1.5rem 2rem;
+    border-radius: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 2px solid transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+}
+
+.lesson-card:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+    transform: translateY(-2px);
+}
+
+.lesson-card.expanded {
+    border-color: var(--accent);
+    background: #1e293b; /* Slightly darker when open */
+    cursor: default;
+}
+
+/* --- Content Styling Inside Cards --- */
+.content-body {
+    margin-top: 1.5rem;
+    color: #cbd5e1;
+    font-size: 1rem;
+}
+
+ul {
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.6rem;
+}
+
+/* --- Tables (For Events and Objects) --- */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    background: rgba(15, 23, 42, 0.5);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.data-table th, .data-table td {
+    padding: 12px 15px;
+    border: 1px solid var(--border);
+}
+
+.data-table th {
+    background-color: rgba(56, 189, 248, 0.1);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+}
+
+.data-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* --- Code and Guidelines --- */
+pre {
+    background: var(--code-bg);
+    padding: 1.2rem;
+    border-radius: 0.6rem;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    margin: 1.5rem 0;
+}
+
+code {
+    font-family: 'Fira Code', 'Courier New', monospace;
+    color: #fbbf24; /* Amber color for code text */
+}
+
+.guideline-box {
+    background: rgba(251, 191, 36, 0.1);
+    border-left: 4px solid #fbbf24;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+}
+
+/* --- Images --- */
+.image-wrapper {
+    width: 100%;
+    margin: 1.5rem 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.big-lesson-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 600px) {
+    .container {
+        padding: 1.5rem;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .lesson-card {
+        padding: 1rem 1.2rem;
+    }
+}

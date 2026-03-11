@@ -1,0 +1,268 @@
+/* 🌟 ===== HEADER ===== */
+.main-header {
+    background: linear-gradient(135deg, #93c5fd, #dbeafe, #eff6ff);
+    text-align: center;
+    padding: 30px 20px;
+    font-family: 'Poppins', sans-serif;
+    color: #1e3a8a;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 4px solid #bfdbfe;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 🌈 ===== BODY ===== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: linear-gradient(180deg, #e0f2fe, #f0f9ff, #ffffff);
+    color: #333;
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ✨ Floating background shapes */
+body::before,
+body::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+body::before {
+    width: 250px;
+    height: 250px;
+    background: rgba(147, 197, 253, 0.3);
+    top: -60px;
+    left: -60px;
+    filter: blur(40px);
+}
+
+body::after {
+    width: 300px;
+    height: 300px;
+    background: rgba(191, 219, 254, 0.3);
+    bottom: -100px;
+    right: -100px;
+    filter: blur(50px);
+}
+
+/* 🧩 ===== CONTAINER ===== */
+.container {
+    max-width: 950px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ✨ ===== TITLE & DIVIDERS ===== */
+h1 {
+    text-align: center;
+    color: #1e3a8a;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    text-align: center;
+    color: #1d4ed8;
+    font-weight: 600;
+    font-size: 22px;
+    margin: 50px 0 20px;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #93c5fd);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* 🪄 ===== PARAGRAPHS ===== */
+p {
+    font-size: 16px;
+    color: #334155;
+    margin-bottom: 18px;
+}
+
+/* 📦 ===== BOX GRID SECTION ===== */
+.scroll-container1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 50px;
+    background: linear-gradient(135deg, #dbeafe, #eff6ff);
+    border-radius: 20px;
+    margin-top: 30px;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.box1 {
+    flex: 1 1 28%;
+    max-width: 28%;
+    height: 220px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    animation: fadeIn 0.6s ease forwards;
+    opacity: 0;
+}
+
+.box1 a {
+    color: #1e3a8a;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.box1:hover {
+    transform: translateY(-10px) scale(1.03);
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.2);
+}
+
+.box1:hover a {
+    color: #1d4ed8;
+}
+
+/* 🎞️ ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🖼️ ===== PHOTO GALLERY ===== */
+.photo-gallery {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 40px 0;
+}
+
+.photo-item {
+    text-align: center;
+    border: 1px solid #cbd5e1;
+    padding: 15px;
+    border-radius: 12px;
+    background-color: #f8fafc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    animation: fadeIn 0.8s ease;
+}
+
+.photo-item:hover {
+    transform: translateY(-6px);
+    background: #f1f5f9;
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.15);
+}
+
+.photo-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    transition: transform 0.4s ease;
+}
+
+.photo-item:hover img {
+    transform: scale(1.05);
+}
+
+.caption {
+    font-size: 0.9em;
+    color: #475569;
+}
+
+/* 💡 ===== FOOTER ===== */
+footer {
+    background: linear-gradient(135deg, #dbeafe, #eff6ff);
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #1e3a8a;
+    border-top: 2px solid #bfdbfe;
+    margin-top: 40px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+}
+
+/* 📱 ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 900px) {
+    .box1 {
+        flex: 1 1 45%;
+        max-width: 45%;
+    }
+}
+
+@media (max-width: 600px) {
+    .box1 {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .container {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+}
+
+/* 🎨 ===== BUTTONS ===== */
+.buttons {
+    text-align: center;
+    margin: 40px 0 60px;
+}
+
+.btn {
+    background-color: #1e3a8a;
+    color: white;
+    text-decoration: none;
+    padding: 14px 30px;
+    margin: 0 10px;
+    border-radius: 30px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.btn:hover {
+    background-color: #3b82f6;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+

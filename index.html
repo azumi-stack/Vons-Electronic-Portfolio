@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+        <div> <a href="index2.html">Back to Home page</a></div>
+            <h1 id="menu-title">Select Quarter</h1>
+            <p id="menu-subtitle">Choose a term to continue</p>
+        </header>
+
+        <div id="button-grid" class="grid">
+            <button class="btn" onclick="showQuarter('3rd')">3rd Quarter</button>
+            <button class="btn" onclick="showQuarter('4th')">4th Quarter</button>
+        </div>
+
+        <div id="back-container" class="hidden">
+            <button class="btn-back" onclick="window.location.href='index.html'">← Change Quarter</button>
+        </div>
+    </div>
+
+    <script>
+        const grid = document.getElementById('button-grid');
+        const title = document.getElementById('menu-title');
+        const subtitle = document.getElementById('menu-subtitle');
+        const backBtn = document.getElementById('back-container');
+
+        function showQuarter(q) {
+            title.innerText = q + " Quarter";
+            subtitle.innerText = "Select a category";
+            grid.innerHTML = ''; 
+            backBtn.classList.remove('hidden');
+
+            if (q === '4th') grid.classList.add('four-items');
+            else grid.classList.remove('four-items');
+
+            const options = q === '3rd' ? ['Events', 'Lessons'] : ['Lessons', 'Events', 'Noli', 'AP'];
+
+            options.forEach(item => {
+                const b = document.createElement('button');
+                b.className = 'btn';
+                b.innerText = item;
+
+                b.onclick = () => {
+                    if (item === 'Events') window.location.href = `events.html?q=${q}`;
+                    else if (item === 'Lessons') window.location.href = `lessons.html?q=${q}`;
+                    else if (item === 'AP') window.location.href = `ap.html?q=${q}`;
+                    else if (item === 'Noli') window.location.href = `noli.html?q=${q}`;
+                    else alert(item + " coming soon!");
+                };
+                grid.appendChild(b);
+            });
+        }
+
+        window.onload = () => {
+            const params = new URLSearchParams(window.location.search);
+            const view = params.get('view');
+            if (view) showQuarter(view);
+        };
+    </script>
+</body>
+</html>

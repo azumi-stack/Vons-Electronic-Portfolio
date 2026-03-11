@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICT Lessons | Academic Portal</title>
+    <link rel="stylesheet" href="styleict.css">
+    <style>
+        /* Refined Interactive Styles */
+        .lesson-card {
+            cursor: pointer;
+            overflow: hidden;
+            max-height: 70px; /* Collapsed state showing only the title */
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s;
+            position: relative;
+        }
+
+        .lesson-card.expanded {
+            max-height: 5000px; /* Large enough to fit all content */
+            border-color: var(--accent);
+        }
+
+        .lesson-card h2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .lesson-card h2::after {
+            content: '▼';
+            font-size: 0.9rem;
+            transition: transform 0.3s;
+            color: var(--accent);
+        }
+
+        .lesson-card.expanded h2::after {
+            transform: rotate(180deg);
+        }
+
+        .content-body {
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            pointer-events: none;
+        }
+
+        .lesson-card.expanded .content-body {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Documentation & Table Styles */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: #0f172a;
+        }
+        .data-table th, .data-table td {
+            border: 1px solid #475569;
+            padding: 10px;
+            text-align: left;
+        }
+        .data-table th { background-color: #1e293b; color: var(--accent); }
+
+        pre {
+            background: #000;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            border: 1px solid #334155;
+        }
+        
+        .guideline-box {
+            background: #1e293b;
+            border-left: 4px solid #fbbf24;
+            padding: 10px 15px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container lesson-page">
+        <a id="dynamic-back" class="btn-back">← Back</a>
+        
+        <h1 id="lesson-header">ICT Lessons</h1>
+
+        <div id="lessons-container">
+            </div>
+    </div>
+
+    <script>
+        const lessonData = {
+            "3rd": [
+                { 
+                    title: "Lesson 1: Formatting text with CSS", 
+                    img: "indent.png",
+                },
+                { 
+                    title: "Lesson 2: Background image", 
+                    img: "background.png",
+                },
+                { 
+                    title: "Lesson 3: Border", 
+                    img: "border.png", 
+                }
+            ],
+            "4th": [
+                {
+                    title: "📘 Lesson 1: Introduction to JavaScript",
+                    content: `
+                        <div class="content-body">
+                            <h3>Purpose</h3>
+                            <p>To create dynamic, interactive user experiences, handling everything from UI rendering (like React for Facebook) and content loading to real-time updates, personalized feeds, video controls (captions, volume), and tracking user activity (Meta Pixel).</p>
+                            
+                            
+
+                            <h3>Static Website vs. Dynamic Website</h3>
+                            <ul>
+                                <li><strong>Static:</strong> Display the same content for every visitor.</li>
+                                <li><strong>Dynamic:</strong> Content changes based on user interaction or data.</li>
+                            </ul>
+
+                            <h3>Key Facts about JavaScript</h3>
+                            <ul>
+                                <li>The MOST popular & widely used scripting language on the internet.</li>
+                                <li>Recognized & works in all major browsers.</li>
+                                <li>Developed by Brendan Eich of Netscape under the name Mocha, which was later renamed to LiveScript.</li>
+                                <li>Opened to Internet Explorer in 1996.</li>
+                                <li>Enhances webpages and can be used to build video games.</li>
+                                <li>A trademark of the Oracle Corporation and is licensed for use to other entities like Mozilla Foundation.</li>
+                                <li>A client-side, high-level scripting, interpreted & object-oriented language.</li>
+                                <li><strong>Client-side:</strong> the codes and formulas are processed right on the user’s own computer.</li>
+                                <li><strong>High-level scripting:</strong> codes are written in words that are close to English as possible.</li>
+                                <li><strong>Interpreted:</strong> the program is passed as source code then converted into machine code.</li>
+                                <li>Designed to add interactivity and functionality to the Web site. Thus making the contents more dynamic and the elements are enhanced.</li>
+                                <li>Case-sensitive.</li>
+                                <li>Semi-colons at the end of bth statement are not required (but recommended).</li>
+                            </ul>
+
+                            <h3>What can JavaScript do?</h3>
+                            <ul>
+                                <li><strong>React to events:</strong> certain events such as mouse clicks, and pre-loading of webpage can lead to executing codes written in JavaScript.</li>
+                                <li><strong>Can be used to validate data:</strong> form requires user input, instead of using server-side scripting, JavaScript can be used to validate it and thus save processing time.</li>
+                                <li><strong>Can be used to create cookies:</strong> Used to save or retrieve information from a visitor’s computer. This can be used to monitor the visitor’s internet habit and preferences.</li>
+                                <li><strong>Can enhance a webpage</strong></li>
+                            </ul>
+
+                            <h3>Features of JavaScript</h3>
+                            <ul>
+                                <li>Supports all structured programming syntax in C.</li>
+                                <li>Has dynamic typing, the value of the variable is dependent on what the value was assigned to it even during run time, the type can still change.</li>
+                                <li>Can run locally in a Web site, so interaction within the user and the site is faster or more responsive.</li>
+                                <li>Can detect user actions, such as mouse clicks, which HTML could not do alone.</li>
+                                <li>Can be combined with CSS to produce DHTML. DHTML can make site more flexible by adding effects tulad ng message scrollers, mouse trails and falling snow.</li>
+                            </ul>
+
+                            <h3>Characteristics & Disadvantages</h3>
+                            <p><strong>Characteristics:</strong> Lightweight programming language, Inserted into HTML pages, Supported by all modern web browsers, Easy to learn and encoder-friendly, Quick to download effects, No need for any extra tools to write, License-free, Has a thriving and supportive online community.</p>
+                            <p><strong>Disadvantages:</strong> Some browsers (PDA/Mobile) do not support JS. Some disable it for security. Secrets in JS could be extracted. Potential for malicious authors via DOM. Authors cannot perfectly conceal how JS operates because code is sent to client. Hard-to-understand codes can still be reverse engineered.</p>
+                        </div>`
+                },
+                {
+                    title: "📍 Lesson 2: Script Placement & Guidelines",
+                    content: `
+                        <div class="content-body">
+                            <h3>Where can you place Scripts?</h3>
+                            <ul>
+                                <li><strong>Head:</strong> Scripts are pre-loaded – executed before anyone triggers an event. Ideally for functions calls.</li>
+                                <li><strong>Body:</strong> Scripts are executed when the page loads.</li>
+                                <li><strong>Head & Body:</strong> You can place script tags whenever and how many you want to.</li>
+                            </ul>
+
+                            <h3>EXTERNAL JAVASCRIPT</h3>
+                            <p>Helpful for controlling different HTML files. Save file with <code>.js</code> extension.</p>
+                            <pre><code>&lt;script type="text/JavaScript" src="myJavaScript.js"&gt;&lt;/script&gt;</code></pre>
+                            <p>Note: The .js file itself does not contain the script tags.</p>
+
+                            <h3>Comments in JavaScript</h3>
+                            <ul>
+                                <li>Single line: <code>// comment</code></li>
+                                <li>Multiple line/block: <code>/* comment */</code></li>
+                            </ul>
+
+                            <h3>JavaScript Guidelines</h3>
+                            <div class="guideline-box">
+                                <p><strong>Case Sensitive:</strong> Variable <code>myHome</code> is not equal to <code>MyHome</code>.</p>
+                                <p><strong>White Space:</strong> JS ignores white space within code lines. Used for readability.</p>
+                                <p><strong>Breaking code lines:</strong> Use a backslash (\\). Do not break in between commands.</p>
+                            </div>
+                        </div>`
+                },
+                {
+                    title: "🧩 Lesson 3: Key Concepts & Objects",
+                    content: `
+                        <div class="content-body">
+                            
+                            
+                            <h3>Advanced Characteristics</h3>
+                            <p><strong>Interpreted Language:</strong> Requires a browser to run. Source code easily seen via view source.</p>
+                            <p><strong>Scripting Language:</strong> Normally created to perform simple repetitive tasks. Provides instructions to other programs.</p>
+                            <p><strong>Client-Side Scripting:</strong> Executed on the machine you are using, not the server.</p>
+                            <p><strong>Object-Oriented Scripting:</strong> Treats every element as an object with associated methods (actions).</p>
+
+                            <h3>Key Terms</h3>
+                            <ul>
+                                <li><strong>Objects:</strong> Items that exist in the browser (Window, page, etc).</li>
+                                <li><strong>Methods:</strong> Actions performed on/by an object.</li>
+                                <li><strong>Properties:</strong> Existing subsection of an object.</li>
+                                <li><strong>Event:</strong> Something which happens (page load, mouse over).</li>
+                                <li><strong>Parsing:</strong> Process of analyzing data and converting it into structured format.</li>
+                            </ul>
+
+                            <h3>Commonly Used Objects</h3>
+                            <table class="data-table">
+                                <tr><th>Object</th><th>Samples/Methods</th></tr>
+                                <tr><td><strong>Window</strong></td><td>Location (go to new location), Open (new window), setTimeout</td></tr>
+                                <tr><td><strong>Document</strong></td><td>fgColor (foreground color), cookie, write (display message), lastModified</td></tr>
+                                <tr><td><strong>Math</strong></td><td>PI, pow (power), max (larger value), min (smaller value)</td></tr>
+                                <tr><td><strong>Navigator</strong></td><td>appName, appVersion, cookieEnabled, platform</td></tr>
+                            </table>
+                        </div>`
+                },
+                {
+                    title: "⚡ Lesson 4: Events, Popups, and Variables",
+                    content: `
+                        <div class="content-body">
+                            <h3>Table of Event Triggers</h3>
+                            <table class="data-table">
+                                <tr><th>Attribute</th><th>Trigger</th></tr>
+                                <tr><td>onclick</td><td>Mouse click of an object</td></tr>
+                                <tr><td>onblur</td><td>An element loses focus</td></tr>
+                                <tr><td>onchange</td><td>Content of a field changes</td></tr>
+                                <tr><td>onkeydown</td><td>A keyboard key is pressed</td></tr>
+                                <tr><td>onload</td><td>A page/image is finished loading</td></tr>
+                                <tr><td>onsubmit</td><td>The submit button is clicked</td></tr>
+                            </table>
+
+                            <h3>Popup Boxes</h3>
+                            <ul>
+                                <li><strong>Alert Box:</strong> <code>alert("message");</code> - Used for warnings/greetings.</li>
+                                <li><strong>Prompt Box:</strong> <code>prompt("message", "default");</code> - Gathers user input. Returns value or null.</li>
+                                <li><strong>Confirm Box:</strong> <code>confirm("message");</code> - Verification. Returns true or false.</li>
+                            </ul>
+
+                            <h3>Variables & Data Types</h3>
+                            <p><strong>Rules:</strong> Must begin with letter or underscore; Case-sensitive; No spaces; Avoid reserved words.</p>
+                            <p><strong>Data Types:</strong> Character, String, Integer, Float, Boolean, Function, Object, Array, Undefined, Null.</p>
+
+                            <h3>Operators</h3>
+                            <ul>
+                                <li><strong>Arithmetic:</strong> +, -, *, /, % (Modulus), ++ (Increment), -- (Decrement)</li>
+                                <li><strong>Comparison:</strong> ==, === (Identical), !=, !==, >, <, >=, <=</li>
+                                <li><strong>Logical:</strong> && (And), || (Or), ! (Not)</li>
+                            </ul>
+
+                            <h3>Conditional Statements</h3>
+                            <p><strong>if, if-else, if-else if-else, switch.</strong> Use <code>break</code> in switch statements to prevent continuous execution.</p>
+                        </div>`
+                }
+            ]
+        };
+
+        window.onload = () => {
+            const params = new URLSearchParams(window.location.search);
+            const q = params.get('q') || '4th';
+            
+            const backBtn = document.getElementById('dynamic-back');
+            backBtn.href = `index.html?view=${q}`;
+            backBtn.innerText = `← Back to ${q} Quarter Page`;
+            
+            document.getElementById('lesson-header').innerText = `${q} Quarter ICT Lessons`;
+
+            const container = document.getElementById('lessons-container');
+            container.innerHTML = ''; 
+
+            lessonData[q].forEach((lesson, index) => {
+                const card = document.createElement('div');
+                card.className = 'lesson-card';
+                
+                if (q === '3rd') {
+                    card.innerHTML = `
+                        <h2>${lesson.title}</h2>
+                        <div class="content-body">
+                            <div class="image-wrapper"><img src="${lesson.img}" class="big-lesson-img"></div>
+                            <div class="explanation-box"><p>${lesson.desc}</p></div>
+                        </div>
+                    `;
+                } else {
+                    card.innerHTML = `<h2>${lesson.title}</h2>${lesson.content}`;
+                }
+
+                // Interaction: Toggle Expand
+                card.addEventListener('click', function() {
+                    const isExpanded = this.classList.contains('expanded');
+                    
+                    // Optional: Close other cards when one is opened
+                    document.querySelectorAll('.lesson-card').forEach(c => c.classList.remove('expanded'));
+                    
+                    if (!isExpanded) {
+                        this.classList.add('expanded');
+                    }
+                });
+
+                container.appendChild(card);
+            });
+        };
+    </script>
+</body>
+</html>
